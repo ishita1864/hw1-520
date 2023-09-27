@@ -26,8 +26,28 @@ public class ExpenseTrackerView extends JFrame {
     if(amountField.getText().isEmpty()) {
       return 0;
     }else {
-    double amount = Double.parseDouble(amountField.getText());
-    return amount;
+
+      String inputText = amountField.getText(); // Your input here;
+      try {
+          int amount = Integer.parseInt(inputText);
+          return amount;
+          // It's an int
+      } catch (NumberFormatException e) {
+          try {
+              double amount = Double.parseDouble(inputText);
+              return amount;
+              // It's a double
+          } catch (NumberFormatException e2) {
+              // It's not a number
+              String message= "Enter a number only";
+              JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+
+          }
+          return -1;
+}
+
+    // double amount = Double.parseDouble(amountField.getText());
+    // return amount;
     }
   }
 
@@ -129,7 +149,11 @@ public class ExpenseTrackerView extends JFrame {
     getTableModel().addRow(new Object[]{t.getAmount(), t.getCategory(), t.getTimestamp()});
     refresh();
   }
-  
+
+  public void showError(String message) {
+    JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+}
+
 
 
   // Other view methods
