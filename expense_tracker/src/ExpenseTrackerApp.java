@@ -40,12 +40,14 @@ public class ExpenseTrackerApp {
           // Display error messages for invalid inputs
 
           if (amount!= -1 && !InputValidation.isValidAmount(amount) && !InputValidation.isValidCategory(category)) {
-              view.showError("Invalid amount and category");
+              view.showError("Invalid amount and category. Amount should be greater than 0 and less than 1000. Valid categories are: food, travel, bills, entertainment, other.");
           }
-
+          
+          //check if the amount is between 0 and 1000
           else if (amount!= -1 && !InputValidation.isValidAmount(amount)) {
               view.showError("Invalid amount. Amount should be greater than 0 and less than 1000.");
           }
+          //check if category is in the list: food, travel, bills, entertainment, other.
           else if (amount!= -1 && !InputValidation.isValidCategory(category)) {
               view.showError("Invalid category. Valid categories are: food, travel, bills, entertainment, other.");
           }

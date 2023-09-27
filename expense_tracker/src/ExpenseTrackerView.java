@@ -27,18 +27,20 @@ public class ExpenseTrackerView extends JFrame {
       return 0;
     }else {
 
-      String inputText = amountField.getText(); // Your input here;
+      String inputText = amountField.getText();
       try {
+         // Check if the input is an intger
           int amount = Integer.parseInt(inputText);
           return amount;
-          // It's an int
+         
       } catch (NumberFormatException e) {
           try {
+            // Check if the input is an double
               double amount = Double.parseDouble(inputText);
               return amount;
-              // It's a double
-          } catch (NumberFormatException e2) {
-              // It's not a number
+
+            } catch (NumberFormatException e2) {
+              // The input is not a number
               String message= "Enter a number only";
               JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -46,8 +48,6 @@ public class ExpenseTrackerView extends JFrame {
           return -1;
 }
 
-    // double amount = Double.parseDouble(amountField.getText());
-    // return amount;
     }
   }
 
@@ -154,7 +154,4 @@ public class ExpenseTrackerView extends JFrame {
     JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
 }
 
-
-
-  // Other view methods
 }
